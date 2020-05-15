@@ -5,46 +5,38 @@ import android.view.View
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.ProgressBar
-import android.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.kotlinsqlitefootballmatchschedule.activity.EventActivity
-import com.example.kotlinsqlitefootballmatchschedule.activity.EventDetailActivity
+import com.example.kotlinsqlitefootballmatchschedule.activity.FavoriteActivity
 import com.example.kotlinsqlitefootballmatchschedule.adapter.EventAdapter
+import com.example.kotlinsqlitefootballmatchschedule.adapter.FavoriteAdapter
+import com.example.kotlinsqlitefootballmatchschedule.database.model.FavoriteModel
 import com.example.kotlinsqlitefootballmatchschedule.model.Event
-import com.example.kotlinsqlitefootballmatchschedule.view.EventView
+import com.example.kotlinsqlitefootballmatchschedule.view.FavoriteView
 import org.jetbrains.anko.*
 import org.jetbrains.anko.recyclerview.v7.recyclerView
 import org.jetbrains.anko.sdk27.coroutines.onQueryTextListener
 
-class EventUI(activity: Activity) : AnkoComponent<EventActivity>, EventView {
+class FavoriteUI (activity: Activity): AnkoComponent<FavoriteActivity>, FavoriteView  {
 
     private var activity:Activity = activity
-    private lateinit var recyclerView:RecyclerView
+    private lateinit var recyclerView: RecyclerView
 
-    lateinit var buttonPrev:Button
-    lateinit var buttonNext:Button
-    lateinit var searchView:SearchView
-
-
-    private var events: MutableList<Event> = mutableListOf()
-    private lateinit var progressBar:ProgressBar
+    lateinit var buttonPrev: Button
+    lateinit var buttonNext: Button
 
 
-    override fun createView(ui: AnkoContext<EventActivity>) = with(ui) {
+    private var favoriteModelList: MutableList<FavoriteModel> = mutableListOf()
+    private lateinit var progressBar: ProgressBar
+
+
+    override fun createView(ui: AnkoContext<FavoriteActivity>) = with(ui) {
         linearLayout {
 
             padding = dip(16)
-
             lparams (width = matchParent, height = matchParent)
             orientation = LinearLayout.VERTICAL
 
-            searchView = searchView {
-                onQueryTextListener {
-
-                }
-
-            }.lparams(matchParent, wrapContent)
 
             linearLayout {
                 lparams(matchParent, wrapContent)
@@ -76,7 +68,7 @@ class EventUI(activity: Activity) : AnkoComponent<EventActivity>, EventView {
                 lparams(matchParent, wrapContent)
 
                 layoutManager = LinearLayoutManager(context)
-                adapter = EventAdapter(context,events){
+                adapter = FavoriteAdapter(context,favoriteModelList){
                     context.toast("id = "+it.idEvent)
                 }
             }
@@ -92,16 +84,16 @@ class EventUI(activity: Activity) : AnkoComponent<EventActivity>, EventView {
         progressBar.visibility = View.GONE
     }
 
-    override fun showNoEvent() {
+    override fun showNoFavorite() {
         recyclerView.visibility = View.GONE
     }
 
-    override fun showEvent(data: List<Event>){
-
+    override fun showFavorite(data: List<FavoriteModel>) {
         recyclerView.visibility = View.VISIBLE
-        recyclerView.adapter = EventAdapter(activity,data as MutableList<Event>){
-            activity.startActivity<EventDetailActivity>("extraEventId" to it.idEvent)
-
+        recyclerView.adapter = FavoriteAdapter(activity,data as MutableList<FavoriteModel>){
+            activity.toast("data : "+it.idEvent)
         }
     }
+
+
 }

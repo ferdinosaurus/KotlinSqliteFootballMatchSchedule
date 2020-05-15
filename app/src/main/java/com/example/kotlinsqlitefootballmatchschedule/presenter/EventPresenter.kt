@@ -2,6 +2,7 @@ package com.example.kotlinsqlitefootballmatchschedule.presenter
 
 import com.example.kotlinfootballmatchschedule.ApiRepository
 import com.example.kotlinfootballmatchschedule.TheSportDBApi
+import com.example.kotlinsqlitefootballmatchschedule.database.model.FavoriteModel
 import com.example.kotlinsqlitefootballmatchschedule.model.EventResponse
 import com.example.kotlinsqlitefootballmatchschedule.model.SearchEventResponse
 import com.example.kotlinsqlitefootballmatchschedule.view.EventView

@@ -22,7 +22,7 @@ class EventDetailActivity : AppCompatActivity(), EventDetailView {
         super.onCreate(savedInstanceState)
         val eventId = intent.getStringExtra("extraEventId")
         setContentView(R.layout.activity_event_detail)
-        eventDetailUI = EventDetailUI()
+        eventDetailUI = EventDetailUI(this)
         eventDetailUI.setContentView(this)
 
         eventDetailPresenter = EventDetailPresenter(this,ApiRepository(), Gson())

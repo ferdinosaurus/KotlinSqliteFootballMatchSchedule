@@ -8,6 +8,7 @@ data class FavoriteModel(
     val id: Long?,
     val idEvent: String?,
     val dateEvent: String?,
+    val strStatus:String?,
     val strTime: String?,
     val strEvent: String?,
     val strSport: String?,
@@ -15,15 +16,21 @@ data class FavoriteModel(
     val strHomeTeam: String?,
     val strAwayTeam: String?,
     val intHomeScore: String?,
-    val intAwayScore: String?,
-    val strBadgeH: String?,
-    val strBadgeA: String?
-) {
+    val intAwayScore: String?
+)
+
+{
     companion object {
         const val TABLE_FAVORITE: String = "TABLE_FAVORITE"
+
+        const val STATUS_NEXT: String = "NEXT"
+        const val STATUS_PREV: String = "PREV"
+
+
         const val ID: String = "ID_"
         const val ID_EVENT: String = "ID_EVENT"
         const val STR_DATEEV: String = "STR_DATEEV"
+        const val STR_STATUS:String = "STR_STATUS"
         const val STR_TIMEEV: String = "STR_TIMEEV"
         const val STR_EVENT: String = "STR_EVENT"
         const val STR_SPORT: String = "STR_SPORT"
@@ -32,7 +39,5 @@ data class FavoriteModel(
         const val STR_TEAMA: String = "STR_TEAMA"
         const val INT_SCOREH: String = "INT_SCOREH"
         const val INT_SCOREA: String = "INT_SCOREA"
-        const val STR_BADGEH: String = "STR_BADGEH"
-        const val STR_BADGEA: String = "STR_BADGEA"
     }
 }

@@ -1,17 +1,26 @@
 package com.example.kotlinsqlitefootballmatchschedule.ui
 
+import android.app.Activity
+import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.widget.*
 import com.example.kotlinsqlitefootballmatchschedule.activity.EventDetailActivity
+import com.example.kotlinsqlitefootballmatchschedule.database.dao.FavoriteDao
+import com.example.kotlinsqlitefootballmatchschedule.database.model.FavoriteModel
 import com.example.kotlinsqlitefootballmatchschedule.helper.StringHelper
 import com.example.kotlinsqlitefootballmatchschedule.model.Event
 import com.example.kotlinsqlitefootballmatchschedule.model.Team
 import com.example.kotlinsqlitefootballmatchschedule.view.EventDetailView
 import com.squareup.picasso.Picasso
 import org.jetbrains.anko.*
+import org.jetbrains.anko.sdk27.coroutines.onClick
 
-class EventDetailUI: AnkoComponent<EventDetailActivity>, EventDetailView {
+class EventDetailUI(activity: Activity): AnkoComponent<EventDetailActivity>, EventDetailView {
+
+    private var activity:Activity = activity
+
+    private var favoriteDao:FavoriteDao = FavoriteDao(activity)
 
     private lateinit var progressBar: ProgressBar
     private lateinit var linearLayout:LinearLayout
@@ -148,6 +157,10 @@ class EventDetailUI: AnkoComponent<EventDetailActivity>, EventDetailView {
                     }
 
                 }
+
+                btnInsertFavorite = button {
+                    text = "add to favorite"
+                }.lparams(matchParent, wrapContent)
 
                 scrollView {
                     linearLayout {
@@ -438,6 +451,10 @@ class EventDetailUI: AnkoComponent<EventDetailActivity>, EventDetailView {
 
         txtStrHomeFormation.text = data.strHomeFormation
         txtStrAwayFormation.text = data.strAwayFormation
+
+        btnInsertFavorite.onClick {
+            favoriteDao.insertData(data,"STATUS")
+        }
 
     }
 

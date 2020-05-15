@@ -6,12 +6,11 @@ import com.example.kotlinsqlitefootballmatchschedule.database.model.FavoriteMode
 import com.example.kotlinsqlitefootballmatchschedule.database.model.FavoriteModel.Companion.ID_EVENT
 import com.example.kotlinsqlitefootballmatchschedule.database.model.FavoriteModel.Companion.INT_SCOREA
 import com.example.kotlinsqlitefootballmatchschedule.database.model.FavoriteModel.Companion.INT_SCOREH
-import com.example.kotlinsqlitefootballmatchschedule.database.model.FavoriteModel.Companion.STR_BADGEA
-import com.example.kotlinsqlitefootballmatchschedule.database.model.FavoriteModel.Companion.STR_BADGEH
 import com.example.kotlinsqlitefootballmatchschedule.database.model.FavoriteModel.Companion.STR_DATEEV
 import com.example.kotlinsqlitefootballmatchschedule.database.model.FavoriteModel.Companion.STR_EVENT
 import com.example.kotlinsqlitefootballmatchschedule.database.model.FavoriteModel.Companion.STR_LEAGUE
 import com.example.kotlinsqlitefootballmatchschedule.database.model.FavoriteModel.Companion.STR_SPORT
+import com.example.kotlinsqlitefootballmatchschedule.database.model.FavoriteModel.Companion.STR_STATUS
 import com.example.kotlinsqlitefootballmatchschedule.database.model.FavoriteModel.Companion.STR_TEAMA
 import com.example.kotlinsqlitefootballmatchschedule.database.model.FavoriteModel.Companion.STR_TEAMH
 import com.example.kotlinsqlitefootballmatchschedule.database.model.FavoriteModel.Companion.STR_TIMEEV
@@ -33,11 +32,7 @@ class MyDatabaseOpenHelper(ctx: Context) : ManagedSQLiteOpenHelper(ctx, "Favorit
 
     override fun onCreate(db: SQLiteDatabase) {
         // Here you create tables
-        db.createTable("TABLE_FAVORITE", true,
-            "ID_" to INTEGER + PRIMARY_KEY + AUTOINCREMENT,
-            "TEAM_ID" to TEXT + UNIQUE,
-            "TEAM_NAME" to TEXT,
-            "TEAM_BADGE" to TEXT)
+        createTable(db)
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
@@ -55,6 +50,7 @@ private fun createTable(db: SQLiteDatabase) {
         TABLE_FAVORITE, true,
         ID to INTEGER + PRIMARY_KEY + AUTOINCREMENT,
         ID_EVENT to TEXT + UNIQUE,
+        STR_STATUS to TEXT,
         STR_DATEEV to TEXT,
         STR_TIMEEV to TEXT,
         STR_EVENT to TEXT,
@@ -62,9 +58,7 @@ private fun createTable(db: SQLiteDatabase) {
         STR_LEAGUE to TEXT,
         STR_TEAMH to TEXT,
         STR_TEAMA to TEXT,
-        INT_SCOREH to INTEGER,
-        INT_SCOREA to INTEGER,
-        STR_BADGEH to TEXT,
-        STR_BADGEA to TEXT
+        INT_SCOREH to TEXT,
+        INT_SCOREA to TEXT
     )
 }

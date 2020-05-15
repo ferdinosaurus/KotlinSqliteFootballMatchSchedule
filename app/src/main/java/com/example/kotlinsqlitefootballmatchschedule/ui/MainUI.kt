@@ -1,17 +1,20 @@
 package com.example.kotlinsqlitefootballmatchschedule.ui
 
 import android.content.Context
+import android.content.Intent
 import android.view.View
 import android.widget.ProgressBar
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlinsqlitefootballmatchschedule.activity.EventActivity
+import com.example.kotlinsqlitefootballmatchschedule.activity.FavoriteActivity
 import com.example.kotlinsqlitefootballmatchschedule.activity.MainActivity
 import com.example.kotlinsqlitefootballmatchschedule.adapter.LeagueAdapter
 import com.example.kotlinsqlitefootballmatchschedule.model.LeagueParcelable
 import com.example.kotlinsqlitefootballmatchschedule.view.MainView
 import org.jetbrains.anko.*
 import org.jetbrains.anko.recyclerview.v7.recyclerView
+import org.jetbrains.anko.sdk27.coroutines.onClick
 
 class MainUI (context: Context): AnkoComponent<MainActivity> , MainView {
 
@@ -28,6 +31,12 @@ class MainUI (context: Context): AnkoComponent<MainActivity> , MainView {
             padding = dip(16)
 
             lparams(matchParent, matchParent)
+            button {
+                text = "my favorite"
+                onClick {
+                    context.startActivity(Intent(context,FavoriteActivity::class.java))
+                }
+            }.lparams(matchParent, wrapContent)
 
             relativeLayout {
 
