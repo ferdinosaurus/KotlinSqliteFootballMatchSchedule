@@ -10,8 +10,9 @@ import org.jetbrains.anko.*
 class FavoriteItemUI: AnkoComponent<ViewGroup> {
 
     companion object {
-        const val tvEventName = 1
-        const val tvEventDate = 2
+        const val tvFavoriteName = 1
+        const val tvFavoriteDate = 2
+        const val btnFavoriteDelete = 3
 
     }
     override fun createView(ui: AnkoContext<ViewGroup>): View = with(ui){
@@ -21,7 +22,7 @@ class FavoriteItemUI: AnkoComponent<ViewGroup> {
             padding = dip(16)
 
             textView {
-                id = tvEventName
+                id = tvFavoriteName
                 text = "Event Name"
                 textSize = 20F
                 textColor = ContextCompat.getColor(context, R.color.colorPrimaryDark)
@@ -33,8 +34,20 @@ class FavoriteItemUI: AnkoComponent<ViewGroup> {
             }
 
             textView {
-                id = tvEventDate
+                id = tvFavoriteDate
                 text = "Event date"
+                textSize = 20F
+                textColor = ContextCompat.getColor(context, R.color.colorPrimaryDark)
+                gravity = Gravity.CENTER
+            }.lparams{
+                width = matchParent
+                height = wrapContent
+                topMargin = 5
+            }
+
+            button {
+                id = btnFavoriteDelete
+                text = "delete"
                 textSize = 20F
                 textColor = ContextCompat.getColor(context, R.color.colorPrimaryDark)
                 gravity = Gravity.CENTER

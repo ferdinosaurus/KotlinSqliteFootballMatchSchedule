@@ -1,11 +1,12 @@
 package com.example.kotlinsqlitefootballmatchschedule.database.dao
 
-import android.app.Activity
+import android.content.Context
 import android.util.Log
 import com.example.kotlinsqlitefootballmatchschedule.database.database
 import com.example.kotlinsqlitefootballmatchschedule.database.model.FavoriteModel
 import com.example.kotlinsqlitefootballmatchschedule.model.Event
 import org.jetbrains.anko.db.classParser
+import org.jetbrains.anko.db.delete
 import org.jetbrains.anko.toast
 
 import org.jetbrains.anko.db.insert
@@ -13,13 +14,13 @@ import org.jetbrains.anko.db.select
 
 import java.lang.Exception
 
-class FavoriteDao(activity:Activity){
+class FavoriteDao(context:Context){
 
-    private var activity:Activity = activity
+    private var context:Context = context
 
     fun insertData(event:Event,status:String){
         try{
-            activity.database.use {
+            context.database.use {
                 insert(
                     FavoriteModel.TABLE_FAVORITE,
                     FavoriteModel.ID_EVENT to event.idEvent,
@@ -34,9 +35,9 @@ class FavoriteDao(activity:Activity){
                     FavoriteModel.INT_SCOREH to event.intHomeScore,
                     FavoriteModel.INT_SCOREA to event.intAwayScore)
             }
-            activity.toast("masuk")
+            context.toast("masuk")
         }catch (e:Exception){
-            activity.toast(e.toString())
+            context.toast(e.toString())
         }
     }
 
@@ -44,7 +45,7 @@ class FavoriteDao(activity:Activity){
         var favoriteModelList:ArrayList<FavoriteModel> = arrayListOf()
         try{
 
-            activity.database.use {
+            context.database.use {
 
                 val result = select(FavoriteModel.TABLE_FAVORITE)
                 result.toString()
@@ -55,7 +56,7 @@ class FavoriteDao(activity:Activity){
             }
         }catch (e:Exception){
             Log.d("dataFavorite",e.toString())
-            activity.toast(e.toString())
+            context.toast(e.toString())
         }
         return favoriteModelList
     }
@@ -64,7 +65,7 @@ class FavoriteDao(activity:Activity){
         var favoriteModelList:ArrayList<FavoriteModel> = arrayListOf()
         try{
 
-            activity.database.use {
+            context.database.use {
 
                 val result = select(FavoriteModel.TABLE_FAVORITE)
                     .whereArgs(FavoriteModel.STR_STATUS+" = {status}",
@@ -78,9 +79,21 @@ class FavoriteDao(activity:Activity){
             }
         }catch (e:Exception){
             Log.d("dataFavorite",e.toString())
-            activity.toast(e.toString())
+            context.toast(e.toString())
         }
         return favoriteModelList
+    }
+
+    fun deleteByID(id: Long){
+        try{
+            context.database.use {
+                delete(FavoriteModel.TABLE_FAVORITE,FavoriteModel.ID+" = {id}","id" to id)
+            }
+        }catch (e:Exception){
+            Log.d("dataFavorite",e.toString())
+            context.toast(e.toString())
+        }
+
     }
 
 

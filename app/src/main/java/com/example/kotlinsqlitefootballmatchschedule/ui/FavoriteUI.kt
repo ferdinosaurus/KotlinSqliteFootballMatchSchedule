@@ -12,6 +12,7 @@ import com.example.kotlinsqlitefootballmatchschedule.adapter.EventAdapter
 import com.example.kotlinsqlitefootballmatchschedule.adapter.FavoriteAdapter
 import com.example.kotlinsqlitefootballmatchschedule.database.model.FavoriteModel
 import com.example.kotlinsqlitefootballmatchschedule.model.Event
+import com.example.kotlinsqlitefootballmatchschedule.presenter.FavoritePresenter
 import com.example.kotlinsqlitefootballmatchschedule.view.FavoriteView
 import org.jetbrains.anko.*
 import org.jetbrains.anko.recyclerview.v7.recyclerView
@@ -20,11 +21,8 @@ import org.jetbrains.anko.sdk27.coroutines.onQueryTextListener
 class FavoriteUI (activity: Activity): AnkoComponent<FavoriteActivity>, FavoriteView  {
 
     private var activity:Activity = activity
+    private val favoritePresenter:FavoritePresenter = FavoritePresenter(activity,this)
     private lateinit var recyclerView: RecyclerView
-
-    lateinit var buttonPrev: Button
-    lateinit var buttonNext: Button
-
 
     private var favoriteModelList: MutableList<FavoriteModel> = mutableListOf()
     private lateinit var progressBar: ProgressBar
@@ -37,30 +35,6 @@ class FavoriteUI (activity: Activity): AnkoComponent<FavoriteActivity>, Favorite
             lparams (width = matchParent, height = matchParent)
             orientation = LinearLayout.VERTICAL
 
-
-            linearLayout {
-                lparams(matchParent, wrapContent)
-                orientation = LinearLayout.HORIZONTAL
-
-                buttonPrev = button {
-                    text = "prev"
-                }.lparams{
-                    width = dip(0)
-                    height = matchParent
-                    weight = 1F
-                }
-
-
-                buttonNext = button {
-                    text = "next"
-                }.lparams{
-                    width = dip(0)
-                    height = matchParent
-                    weight = 1F
-                }
-
-            }
-
             progressBar = progressBar {
             }.lparams(matchParent, wrapContent)
 
@@ -68,7 +42,7 @@ class FavoriteUI (activity: Activity): AnkoComponent<FavoriteActivity>, Favorite
                 lparams(matchParent, wrapContent)
 
                 layoutManager = LinearLayoutManager(context)
-                adapter = FavoriteAdapter(context,favoriteModelList){
+                adapter = FavoriteAdapter(context,favoriteModelList,favoritePresenter){
                     context.toast("id = "+it.idEvent)
                 }
             }
@@ -90,10 +64,8 @@ class FavoriteUI (activity: Activity): AnkoComponent<FavoriteActivity>, Favorite
 
     override fun showFavorite(data: List<FavoriteModel>) {
         recyclerView.visibility = View.VISIBLE
-        recyclerView.adapter = FavoriteAdapter(activity,data as MutableList<FavoriteModel>){
+        recyclerView.adapter = FavoriteAdapter(activity,data as MutableList<FavoriteModel>,favoritePresenter){
             activity.toast("data : "+it.idEvent)
         }
     }
-
-
 }

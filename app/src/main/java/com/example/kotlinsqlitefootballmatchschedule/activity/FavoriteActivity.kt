@@ -21,25 +21,11 @@ class FavoriteActivity : AppCompatActivity() ,FavoriteView{
         favoriteUI.setContentView(this)
         init()
         favoritePresenter.getAllFavorite()
-        setupListener()
     }
 
     private fun init(){
         favoritePresenter = FavoritePresenter(this,this)
     }
-
-    private fun setupListener(){
-        favoriteUI.buttonPrev.onClick {
-            favoritePresenter.getAllFavorite()
-        }
-
-
-        favoriteUI.buttonNext.onClick {
-            favoritePresenter.getAllFavorite()
-        }
-
-    }
-
     override fun showLoading() {
         favoriteUI.showLoading()
     }
