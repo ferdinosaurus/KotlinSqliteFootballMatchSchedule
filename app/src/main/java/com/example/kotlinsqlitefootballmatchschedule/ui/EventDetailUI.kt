@@ -1,13 +1,11 @@
 package com.example.kotlinsqlitefootballmatchschedule.ui
 
 import android.app.Activity
-import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.widget.*
 import com.example.kotlinsqlitefootballmatchschedule.activity.EventDetailActivity
 import com.example.kotlinsqlitefootballmatchschedule.database.dao.FavoriteDao
-import com.example.kotlinsqlitefootballmatchschedule.database.model.FavoriteModel
 import com.example.kotlinsqlitefootballmatchschedule.helper.StringHelper
 import com.example.kotlinsqlitefootballmatchschedule.model.Event
 import com.example.kotlinsqlitefootballmatchschedule.model.Team
@@ -18,7 +16,6 @@ import org.jetbrains.anko.sdk27.coroutines.onClick
 
 class EventDetailUI(activity: Activity): AnkoComponent<EventDetailActivity>, EventDetailView {
 
-    private var activity:Activity = activity
 
     private var favoriteDao:FavoriteDao = FavoriteDao(activity)
 

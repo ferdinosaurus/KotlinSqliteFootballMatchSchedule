@@ -1,12 +1,11 @@
 package com.example.kotlinsqlitefootballmatchschedule.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.kotlinsqlitefootballmatchschedule.database.model.FavoriteModel
 import com.example.kotlinsqlitefootballmatchschedule.presenter.FavoritePresenter
 import com.example.kotlinsqlitefootballmatchschedule.ui.FavoriteUI
 import com.example.kotlinsqlitefootballmatchschedule.view.FavoriteView
-import org.jetbrains.anko.sdk27.coroutines.onClick
 import org.jetbrains.anko.setContentView
 
 class FavoriteActivity : AppCompatActivity() ,FavoriteView{

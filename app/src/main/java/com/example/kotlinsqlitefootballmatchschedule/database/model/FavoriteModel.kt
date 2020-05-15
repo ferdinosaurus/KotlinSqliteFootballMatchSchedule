@@ -22,11 +22,6 @@ data class FavoriteModel(
 {
     companion object {
         const val TABLE_FAVORITE: String = "TABLE_FAVORITE"
-
-        const val STATUS_NEXT: String = "NEXT"
-        const val STATUS_PREV: String = "PREV"
-
-
         const val ID: String = "ID_"
         const val ID_EVENT: String = "ID_EVENT"
         const val STR_DATEEV: String = "STR_DATEEV"

@@ -1,4 +1,4 @@
-package com.example.kotlinfootballmatchschedule
+package com.example.kotlinsqlitefootballmatchschedule.api
 
 import java.net.URL
 

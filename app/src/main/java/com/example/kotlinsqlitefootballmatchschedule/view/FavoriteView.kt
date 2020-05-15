@@ -1,7 +1,6 @@
 package com.example.kotlinsqlitefootballmatchschedule.view
 
 import com.example.kotlinsqlitefootballmatchschedule.database.model.FavoriteModel
-import com.example.kotlinsqlitefootballmatchschedule.model.Event
 
 
 interface FavoriteView{

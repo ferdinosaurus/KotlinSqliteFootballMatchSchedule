@@ -2,21 +2,17 @@ package com.example.kotlinsqlitefootballmatchschedule.ui
 
 import android.app.Activity
 import android.view.View
-import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.ProgressBar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlinsqlitefootballmatchschedule.activity.FavoriteActivity
-import com.example.kotlinsqlitefootballmatchschedule.adapter.EventAdapter
 import com.example.kotlinsqlitefootballmatchschedule.adapter.FavoriteAdapter
 import com.example.kotlinsqlitefootballmatchschedule.database.model.FavoriteModel
-import com.example.kotlinsqlitefootballmatchschedule.model.Event
 import com.example.kotlinsqlitefootballmatchschedule.presenter.FavoritePresenter
 import com.example.kotlinsqlitefootballmatchschedule.view.FavoriteView
 import org.jetbrains.anko.*
 import org.jetbrains.anko.recyclerview.v7.recyclerView
-import org.jetbrains.anko.sdk27.coroutines.onQueryTextListener
 
 class FavoriteUI (activity: Activity): AnkoComponent<FavoriteActivity>, FavoriteView  {
 

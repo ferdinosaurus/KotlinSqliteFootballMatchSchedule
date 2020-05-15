@@ -2,7 +2,6 @@ package com.example.kotlinsqlitefootballmatchschedule.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.kotlinsqlitefootballmatchschedule.database.database
 import com.example.kotlinsqlitefootballmatchschedule.model.LeagueParcelable
 import com.example.kotlinsqlitefootballmatchschedule.presenter.MainPresenter
 import com.example.kotlinsqlitefootballmatchschedule.ui.MainUI

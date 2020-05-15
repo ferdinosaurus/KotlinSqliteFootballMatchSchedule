@@ -16,7 +16,7 @@ import org.jetbrains.anko.sdk27.coroutines.onClick
 class FavoriteAdapter(private val context: Context, private val items: MutableList<FavoriteModel>,private val favoritePresenter: FavoritePresenter, private val listener:(FavoriteModel) ->Unit )
     : RecyclerView.Adapter<FavoriteAdapter.ViewHolder>() {
 
-    val favoriteDao:FavoriteDao = FavoriteDao(context)
+    private val favoriteDao:FavoriteDao = FavoriteDao(context)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         ViewHolder(FavoriteItemUI().createView(AnkoContext.create(context,parent)))

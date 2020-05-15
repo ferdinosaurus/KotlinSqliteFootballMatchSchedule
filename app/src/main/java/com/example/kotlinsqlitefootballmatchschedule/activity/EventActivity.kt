@@ -3,7 +3,7 @@ package com.example.kotlinsqlitefootballmatchschedule.activity
 import android.os.Bundle
 import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.kotlinfootballmatchschedule.ApiRepository
+import com.example.kotlinsqlitefootballmatchschedule.api.ApiRepository
 import com.example.kotlinsqlitefootballmatchschedule.model.Event
 import com.example.kotlinsqlitefootballmatchschedule.model.LeagueParcelable
 import com.example.kotlinsqlitefootballmatchschedule.presenter.EventPresenter

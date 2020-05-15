@@ -1,4 +1,4 @@
-package com.example.kotlinfootballmatchschedule
+package com.example.kotlinsqlitefootballmatchschedule.api
 
 import android.net.Uri
 import com.example.kotlinsqlitefootballmatchschedule.BuildConfig

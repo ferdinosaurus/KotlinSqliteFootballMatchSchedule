@@ -42,7 +42,7 @@ class FavoriteDao(context:Context){
     }
 
     fun getAll():List<FavoriteModel>{
-        var favoriteModelList:ArrayList<FavoriteModel> = arrayListOf()
+        val favoriteModelList:ArrayList<FavoriteModel> = arrayListOf()
         try{
 
             context.database.use {
@@ -62,7 +62,7 @@ class FavoriteDao(context:Context){
     }
 
     fun getAllByStatus(status: String):List<FavoriteModel>{
-        var favoriteModelList:ArrayList<FavoriteModel> = arrayListOf()
+        val favoriteModelList:ArrayList<FavoriteModel> = arrayListOf()
         try{
 
             context.database.use {

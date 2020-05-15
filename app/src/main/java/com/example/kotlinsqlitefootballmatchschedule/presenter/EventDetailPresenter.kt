@@ -1,7 +1,7 @@
 package com.example.kotlinsqlitefootballmatchschedule.presenter
 
-import com.example.kotlinfootballmatchschedule.ApiRepository
-import com.example.kotlinfootballmatchschedule.TheSportDBApi
+import com.example.kotlinsqlitefootballmatchschedule.api.ApiRepository
+import com.example.kotlinsqlitefootballmatchschedule.api.TheSportDBApi
 import com.example.kotlinsqlitefootballmatchschedule.model.EventResponse
 import com.example.kotlinsqlitefootballmatchschedule.model.TeamsResponse
 import com.example.kotlinsqlitefootballmatchschedule.view.EventDetailView
